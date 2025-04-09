@@ -1,6 +1,4 @@
-/* 전체 페이지 기본 설정 */
-/* 기본 세팅 */
-/* 기본 세팅 */
+/* 기본 설정 */
 html, body {
   height: 100%;
   margin: 0;
@@ -48,6 +46,94 @@ body::-webkit-scrollbar-thumb {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin: 0;
 }
+
+/* Intro section */
+.intro-centered-text {
+  max-width: 960px;
+  margin: 120px auto;
+  text-align: center;
+  font-size: 22px;
+  line-height: 1.6;
+  font-weight: 300;
+  color: #0E3E75;
+  padding: 0 40px;
+  transition: filter 0.4s ease;
+}
+
+.intro-centered-text:hover {
+  filter: blur(4px);
+}
+
+.intro-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 60px 100px 20px 100px; /* ← 위쪽 패딩을 120px → 60px으로 줄임 */
+  background-color: #F9F7F0;
+  box-sizing: border-box;
+}
+
+
+.intro-column {
+  font-size: 32px;
+  line-height: 1.4;
+  font-weight: 300;
+  color: #0E3E75;
+  transition: all 0.8s ease;
+}
+
+.intro-column.right {
+  text-align: right;
+}
+
+.intro-column p:hover {
+  background: rgba(14, 62, 117, 0.05);
+  transition: background 0.3s ease;
+}
+
+/* 썸네일 이미지 영역 */
+.thumbnail-row {
+  display: flex;
+  justify-content: center;  /* 가운데 정렬 */
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 60px auto;
+}
+
+
+.thumbnail {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.thumbnail-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.thumbnail-wrapper:hover::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  color: #0E3E75;
+}
+
 
 /* Main screen */
 #main-screen {
@@ -109,7 +195,7 @@ body::-webkit-scrollbar-thumb {
 .lecture-card {
   position: relative;
   width: 1000px;
-  height: 900px;
+  height: 1100px;
   margin: 0 auto 80px auto;
   background-color: #F9F7F0;
   overflow: hidden;
@@ -120,8 +206,6 @@ body::-webkit-scrollbar-thumb {
 /* Image layer */
 .overlay-img {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -139,7 +223,6 @@ body::-webkit-scrollbar-thumb {
   height: 100%;
   box-sizing: border-box;
   font-family: 'Playfair', serif;
-  color: #0E3E75;
   background-color: #F9F7F0;
   overflow-y: auto;
   z-index: 1;
@@ -151,6 +234,7 @@ body::-webkit-scrollbar-thumb {
 .text-layer::-webkit-scrollbar {
   width: 6px;
 }
+
 .text-layer::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 3px;
@@ -159,92 +243,7 @@ body::-webkit-scrollbar-thumb {
 .lecture-card:hover .overlay-img {
   opacity: 0;
 }
-.lecture-card:hover .text-layer {
-  opacity: 1;
-  pointer-events: auto;
-}
 
-/* Text styles inside card */
-.text-layer h2 {
-  font-size: 48px;
-  font-weight: 300;
-  margin-bottom: 10px;
-}
-
-.text-layer .date {
-  font-size: 24px;
-  color: #000;
-  margin-bottom: 20px;
-}
-
-.lecture-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 30px;
-  margin-bottom: 10px;
-  color: #0E3E75;
-}
-
-.lecture-desc {
-  font-size: 20px;
-  line-height: 1.6;
-  margin-bottom: 30px;
-  color: #000;
-}
-
-.desc {
-  font-size: 24px;
-  line-height: 1.5;
-  color: #000;
-}
-
-.lecture-card {
-  position: relative;
-  width: 1000px;
-  height: 1100px;
-  margin: 0 auto 80px auto;
-  background-color: #F9F7F0;
-  overflow: hidden;
-  border: 1px solid #ddd;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-}
-
-.overlay-img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.5s ease-in-out;
-  z-index: 2;
-}
-
-.text-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 60px;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  font-family: 'Playfair', serif;
-  background-color: #F9F7F0;
-  overflow-y: auto;
-  z-index: 1;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease-in-out;
-}
-.text-layer::-webkit-scrollbar {
-  width: 6px;
-}
-.text-layer::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-}
-
-.lecture-card:hover .overlay-img {
-  opacity: 0;
-}
 .lecture-card:hover .text-layer {
   opacity: 1;
   pointer-events: auto;
@@ -268,10 +267,150 @@ body::-webkit-scrollbar-thumb {
   font-weight: bold;
   color: #0E3E75;
   margin-bottom: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.lecture-title:hover {
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+
+.lecture-desc {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #000;
 }
 
 .desc {
-  font-size: 20px;
+  font-size: 24px;
+  line-height: 1.5;
+  color: #000;
+}
+
+/* 텍스트 카드 전체 래퍼 */
+.card-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  height: 600px; /* ✅ 카드 높이에 맞춰 일치시킴 */
+}
+
+
+.text-card {
+  position: absolute;
+  display: none;
+  width: 800px;
+  height: 600px; /* ✅ 카드 고정 높이 설정 */
+  padding: 40px;
+  font-family: 'Playfair', serif;
+  font-size: 18px;
   line-height: 1.6;
+  color: #0E3E75;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.4s ease;
+  background: #F9F7F0;
+  border-left: 6px solid #0E3E75;
+  overflow-y: auto; /* ✅ 넘치는 내용 스크롤 처리 */
+  border-radius: 16px; /* ✅ 카드 느낌을 위한 둥근 모서리 */
+}
+
+
+/* 활성화된 카드 */
+.text-card.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* 원형 커서 */
+#custom-cursor {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 0, 0, 0.8); /* 예시 색상 */
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+}
+
+.scroll-text-wrapper {
+  width: 100%;
+  overflow: hidden;
+  background: none;
+  margin: 120px 0;
+}
+
+.headline-static {
+  font-size: 108px;
+  font-weight: bold;
+  text-align: center;
+  color: #F76DA4;
+  font-family: 'Playfair', serif;
+  margin: 10px auto 80px auto;
+  max-width: 1200px;
+  line-height: 1.05; /* ⬅ 줄 간격 줄임 */
+  letter-spacing: -0.5px;
+}
+
+.thumbnail-row-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 60px auto;
+}
+
+.side-boxes {
+  display: flex;
+  gap: 10px;
+}
+
+.side-box {
+  width: 20px;
+  height: 60px;
+  background-color: #E0639A; /* Beyond Bias 핑크 */
+  border-radius: 10px;
+  animation: floatUp 2s ease-in-out infinite alternate;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}
+
+.home-link {
+  position: fixed;
+  top: 20px;
+  left: 30px;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  background-color: #F9F7F0;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.home-link:hover {
+  background-color: #e0e0e0;
   color: #000;
 }
